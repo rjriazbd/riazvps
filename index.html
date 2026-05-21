@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="রিয়াজ হোসেন - প্রফেশনাল ওয়েব ডেভেলপার | WordPress & Laravel Expert">
+    <meta name="keywords" content="Web Developer, WordPress, Laravel, Portfolio, রিয়াজ হোসেন">
+    <meta name="author" content="রিয়াজ হোসেন">
+    <title>রিয়াজ হোসেন | ওয়েব ডেভেলপার</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: { 'bangla': ['Hind Siliguri', 'sans-serif'] },
+                colors: { primary: '#3a86ff', dark: '#0a0a1a', glass: 'rgba(255,255,255,0.05)' }
+            }
+        }
+    }
+    </script>
+</head>
+<body class="font-bangla bg-dark text-white overflow-x-hidden">
+
+
+<style>
+/* === BASE STYLES === */
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body { background: #0a0a1a; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a1a; }
+::-webkit-scrollbar-thumb { background: #3a86ff; border-radius: 10px; }
+
+/* === GLASSMORPHISM === */
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card:hover {
+    background: rgba(58, 134, 255, 0.08);
+    border-color: rgba(58, 134, 255, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(58, 134, 255, 0.15);
+}
+
+
+/* === GRADIENT TEXT === */
+.gradient-text {
+    background: linear-gradient(135deg, #3a86ff, #8338ec, #ff006e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.gradient-text-alt {
+    background: linear-gradient(135deg, #3a86ff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* === BUTTONS === */
+.btn-primary {
+    background: linear-gradient(135deg, #3a86ff, #8338ec);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(58, 134, 255, 0.4); }
+
+.btn-outline {
+    border: 2px solid rgba(58, 134, 255, 0.5);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+.btn-outline:hover {
+    background: rgba(58, 134, 255, 0.1);
+    border-color: #3a86ff;
+    transform: translateY(-3px);
+}
+
+
+/* === ANIMATIONS === */
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+@keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(58, 134, 255, 0.3); } 50% { box-shadow: 0 0 40px rgba(58, 134, 255, 0.6); } }
+@keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes blink { 0%, 100% { border-color: transparent; } 50% { border-color: #3a86ff; } }
+@keyframes slideInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.float-animation { animation: float 6s ease-in-out infinite; }
+.pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.gradient-bg { background-size: 200% 200%; animation: gradient-shift 5s ease infinite; }
+
+/* === REVEAL ANIMATIONS === */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.reveal-left.active { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.reveal-right.active { opacity: 1; transform: translateX(0); }
+.reveal-scale { opacity: 0; transform: scale(0.85); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.reveal-scale.active { opacity: 1; transform: scale(1); }
+
+
+/* === NAVBAR === */
+.navbar {
+    background: rgba(10, 10, 26, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+.navbar.scrolled {
+    background: rgba(10, 10, 26, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.nav-link {
+    position: relative;
+    padding: 8px 0;
+    transition: color 0.3s;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, #3a86ff, #8338ec);
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link:hover, .nav-link.active { color: #3a86ff; }
+
+/* === HERO SECTION === */
+.hero-bg {
+    background: radial-gradient(ellipse at 20% 50%, rgba(58, 134, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(131, 56, 236, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(255, 0, 110, 0.05) 0%, transparent 50%);
+}
+
+/* === PARTICLE BACKGROUND === */
+.particles {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+.particle {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: rgba(58, 134, 255, 0.4);
+    border-radius: 50%;
+    animation: float 8s infinite;
+}
+
+
+/* === PROJECT CARDS === */
+.project-card {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.project-img-wrapper {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+.project-img-wrapper img {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: object-position 3s ease;
+}
+.project-card:hover .project-img-wrapper img {
+    object-position: bottom;
+}
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 10, 26, 0.95), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+.project-card:hover .project-overlay { opacity: 1; }
+
+/* === SKILLS === */
+.skill-bar {
+    height: 8px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+.skill-progress {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #3a86ff, #8338ec);
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === SECTION TITLE === */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #3a86ff, #8338ec);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* === FLOATING SHAPES === */
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* === CONTACT FORM === */
+.form-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: white;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+.form-input:focus {
+    outline: none;
+    border-color: #3a86ff;
+    box-shadow: 0 0 20px rgba(58, 134, 255, 0.1);
+    background: rgba(58, 134, 255, 0.03);
+}
+
+/* === MOBILE MENU === */
+.mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-menu.open { transform: translateX(0); }
+
+/* === TIMELINE === */
+.timeline-line {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #3a86ff, #8338ec, transparent);
+}
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #3a86ff;
+    border: 3px solid #0a0a1a;
+    box-shadow: 0 0 15px rgba(58, 134, 255, 0.5);
+}
+
+/* === MAP === */
+.map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.map-container iframe {
+    filter: grayscale(0.7) invert(0.92) contrast(0.9);
+}
+
+/* === COUNTER === */
+.counter-value { font-variant-numeric: tabular-nums; }
+</style>
+
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar fixed top-0 left-0 w-full z-50 px-6 py-4" id="navbar">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a href="#home" class="text-2xl font-bold gradient-text">রিয়াজ<span class="text-white">.</span></a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#home" class="nav-link text-gray-300 active">হোম</a>
+            <a href="#about" class="nav-link text-gray-300">আমার সম্পর্কে</a>
+            <a href="#skills" class="nav-link text-gray-300">দক্ষতা</a>
+            <a href="#projects" class="nav-link text-gray-300">প্রজেক্ট</a>
+            <a href="#experience" class="nav-link text-gray-300">অভিজ্ঞতা</a>
+            <a href="#testimonials" class="nav-link text-gray-300">মতামত</a>
+            <a href="#contact" class="nav-link text-gray-300">যোগাযোগ</a>
+        </div>
+        <button class="md:hidden text-2xl text-white" id="menuBtn" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu fixed top-0 right-0 w-72 h-full bg-[#0d0d24] z-[60] p-8 flex flex-col gap-6" id="mobileMenu">
+    <button class="self-end text-2xl text-white mb-6" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+    <a href="#home" class="mobile-nav-link text-lg text-gray-300 hover:text-primary transition">হোম</a>
+    <a href="#about" class="mobile-nav-link text-lg text-gray-300 hover:text-primary transition">আমার সম্পর্কে</a>
+    <a href="#skills" class="mobile-nav-link text-lg text-gray-300 hover:text-primary transition">দক্ষতা</a>
+    <a href="#projects" class="mobile-nav-link text-lg text-gray-300 hover:text-primary transition">প্রজেক্ট</a>
+    <a href="#experience" class="mobile-nav-link text-lg text-gray-300 hover:text-primary transition">অভিজ্ঞতা</a>
+    <a href="#testimonials" class="mobile-nav-link text-lg text-gray-300 hover:text-primary transition">মতামত</a>
+    <a href="#contact" class="mobile-nav-link text-lg text-gray-300 hover:text-primary transition">যোগাযোগ</a>
+</div>
+<div class="fixed inset-0 bg-black/50 z-[55] hidden" id="menuOverlay"></div>
+
+
+<!-- ========== HERO SECTION ========== -->
+<section id="home" class="min-h-screen flex items-center relative hero-bg pt-20">
+    <div class="particles" id="particles"></div>
+    <!-- Floating Shapes -->
+    <div class="floating-shape w-72 h-72 bg-primary top-20 -left-20 float-animation" style="animation-delay: 0s;"></div>
+    <div class="floating-shape w-96 h-96 bg-purple-600 -bottom-32 -right-32 float-animation" style="animation-delay: 2s;"></div>
+    <div class="floating-shape w-48 h-48 bg-pink-500 top-1/2 right-1/4 float-animation" style="animation-delay: 4s;"></div>
+
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+        <div class="order-2 md:order-1">
+            <p class="text-primary font-medium text-lg mb-3 reveal-left" style="transition-delay: 0.1s;">
+                <i class="fas fa-code mr-2"></i>স্বাগতম আমার পোর্টফোলিওতে
+            </p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 reveal-left" style="transition-delay: 0.2s;">
+                আমি <span class="gradient-text" id="heroName">রিয়াজ হোসেন</span>
+            </h1>
+            <div class="text-xl md:text-2xl text-gray-300 mb-6 h-8 reveal-left" style="transition-delay: 0.3s;">
+                <span id="typingText" class="border-r-2 border-primary pr-1"></span>
+            </div>
+            <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-lg reveal-left" style="transition-delay: 0.4s;" id="heroDescription">
+                একজন অভিজ্ঞ ওয়েব ডেভেলপার যিনি WordPress এবং Laravel এ বিশেষজ্ঞ। আধুনিক, রেসপনসিভ এবং ইউজার-ফ্রেন্ডলি ওয়েবসাইট তৈরি করা আমার প্যাশন।
+            </p>
+            <div class="flex flex-wrap gap-4 mb-8 reveal-left" style="transition-delay: 0.5s;">
+                <a href="#contact" class="btn-primary text-white">
+                    <i class="fas fa-paper-plane"></i> যোগাযোগ করুন
+                </a>
+                <a href="#projects" class="btn-outline text-white">
+                    <i class="fas fa-eye"></i> প্রজেক্ট দেখুন
+                </a>
+            </div>
+            <div class="flex gap-4 reveal-left" style="transition-delay: 0.6s;" id="heroSocials"></div>
+        </div>
+        <div class="order-1 md:order-2 flex justify-center reveal-scale" style="transition-delay: 0.3s;">
+            <div class="relative">
+                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 pulse-glow">
+                    <img id="heroImage" src="" alt="রিয়াজ হোসেন" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-4 -right-4 glass-card px-4 py-2 float-animation">
+                    <span class="text-primary font-bold">3+</span> <span class="text-sm text-gray-300">বছরের অভিজ্ঞতা</span>
+                </div>
+                <div class="absolute -top-4 -left-4 glass-card px-4 py-2 float-animation" style="animation-delay: 1s;">
+                    <span class="text-primary font-bold">50+</span> <span class="text-sm text-gray-300">প্রজেক্ট সম্পন্ন</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400">
+        <span class="text-sm">স্ক্রল করুন</span>
+        <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-2">
+            <div class="w-1.5 h-3 bg-primary rounded-full animate-bounce"></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ========== ABOUT SECTION ========== -->
+<section id="about" class="py-24 relative">
+    <div class="floating-shape w-64 h-64 bg-primary top-10 right-10 float-animation" style="animation-delay: 1s;"></div>
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title reveal">আমার সম্পর্কে</h2>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="reveal-left">
+                <div class="glass-card p-8">
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6" id="aboutText">
+                        আমি রিয়াজ হোসেন, একজন প্যাশনেট ওয়েব ডেভেলপার। গত ৩+ বছর ধরে আমি WordPress এবং Laravel প্ল্যাটফর্মে কাজ করছি। আমি বিশ্বাস করি প্রতিটি ওয়েবসাইট হওয়া উচিত সুন্দর, দ্রুত এবং ব্যবহারকারী বান্ধব।
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        আমার লক্ষ্য হলো ক্লায়েন্টদের জন্য এমন ডিজিটাল সলিউশন তৈরি করা যা তাদের ব্যবসাকে নতুন উচ্চতায় নিয়ে যাবে।
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-user text-primary"></i>
+                            <span class="text-gray-400" id="aboutName">রিয়াজ হোসেন</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-phone text-primary"></i>
+                            <span class="text-gray-400" id="aboutPhone">+8801840573758</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-primary"></i>
+                            <span class="text-gray-400 text-sm" id="aboutEmail">riazofficialbd@gmail.com</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                            <span class="text-gray-400" id="aboutLocation">Sirajganj, Belkuchi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal-right">
+                <div class="grid grid-cols-2 gap-6" id="statsGrid">
+                    <!-- Stats will be injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ========== SKILLS SECTION ========== -->
+<section id="skills" class="py-24 relative">
+    <div class="floating-shape w-48 h-48 bg-purple-600 bottom-20 left-10 float-animation" style="animation-delay: 3s;"></div>
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title reveal">আমার দক্ষতা</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="reveal-left">
+                <h3 class="text-xl font-bold mb-6 gradient-text-alt">টেকনিক্যাল স্কিল</h3>
+                <div class="space-y-6" id="skillBars">
+                    <!-- Skill bars injected by JS -->
+                </div>
+            </div>
+            <div class="reveal-right">
+                <h3 class="text-xl font-bold mb-6 gradient-text-alt">টেকনোলজি</h3>
+                <div class="grid grid-cols-3 gap-4" id="techGrid">
+                    <!-- Tech cards injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SERVICES SECTION ========== -->
+<section id="services" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title reveal">আমার সেবাসমূহ</h2>
+        <div class="grid md:grid-cols-3 gap-8" id="servicesGrid">
+            <!-- Services injected by JS -->
+        </div>
+    </div>
+</section>
+
+
+<!-- ========== PROJECTS SECTION ========== -->
+<section id="projects" class="py-24 relative">
+    <div class="floating-shape w-56 h-56 bg-pink-500 top-1/3 right-0 float-animation" style="animation-delay: 2s;"></div>
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title reveal">আমার প্রজেক্টসমূহ</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+            <!-- Projects injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ========== EXPERIENCE SECTION ========== -->
+<section id="experience" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title reveal">কাজের অভিজ্ঞতা</h2>
+        <div class="max-w-3xl mx-auto relative pl-12">
+            <div class="timeline-line"></div>
+            <div id="experienceTimeline" class="space-y-10">
+                <!-- Experience items injected by JS -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ========== TESTIMONIALS SECTION ========== -->
+<section id="testimonials" class="py-24 relative">
+    <div class="floating-shape w-40 h-40 bg-primary bottom-10 left-1/3 float-animation" style="animation-delay: 1.5s;"></div>
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title reveal">ক্লায়েন্টদের মতামত</h2>
+        <div class="grid md:grid-cols-3 gap-8" id="testimonialsGrid">
+            <!-- Testimonials injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ========== CONTACT SECTION ========== -->
+<section id="contact" class="py-24 relative">
+    <div class="floating-shape w-72 h-72 bg-purple-600 -top-20 -right-20 float-animation" style="animation-delay: 2.5s;"></div>
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title reveal">যোগাযোগ করুন</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="reveal-left">
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-6 gradient-text-alt">আমাকে মেসেজ করুন</h3>
+                    <form id="contactForm" class="space-y-5">
+                        <input type="text" name="name" placeholder="আপনার নাম" class="form-input" required>
+                        <input type="tel" name="phone" placeholder="ফোন নম্বর" class="form-input" required>
+                        <input type="email" name="email" placeholder="ইমেইল অ্যাড্রেস" class="form-input" required>
+                        <textarea name="message" rows="5" placeholder="আপনার মেসেজ লিখুন..." class="form-input resize-none" required></textarea>
+                        <button type="submit" class="btn-primary text-white w-full justify-center" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> মেসেজ পাঠান
+                        </button>
+                    </form>
+                    <p id="formStatus" class="mt-4 text-center hidden"></p>
+                </div>
+            </div>
+            <div class="reveal-right">
+                <div class="glass-card p-8 h-full flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 gradient-text-alt">যোগাযোগের তথ্য</h3>
+                        <div class="space-y-6" id="contactInfo">
+                            <!-- Contact info injected by JS -->
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold mb-4">সোশ্যাল মিডিয়া</h4>
+                        <div class="flex gap-4" id="contactSocials"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ========== MAP SECTION ========== -->
+<section id="map" class="py-16 px-6">
+    <div class="max-w-7xl mx-auto reveal">
+        <div class="map-container">
+            <iframe id="googleMap" src="" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="py-10 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <a href="#home" class="text-2xl font-bold gradient-text">রিয়াজ<span class="text-white">.</span></a>
+        <p class="text-gray-400 mt-4" id="footerText">© ২০২৬ রিয়াজ হোসেন। সর্বস্বত্ব সংরক্ষিত।</p>
+        <div class="flex justify-center gap-4 mt-6" id="footerSocials"></div>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-primary/80 z-50">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<script>
+// ============================================================
+// ============ DYNAMIC DATA - EDIT THIS SECTION ==============
+// ============================================================
+const siteData = {
+    // === Personal Info ===
+    name: "রিয়াজ হোসেন",
+    nameEn: "Riaz Hosen",
+    title: "ওয়েব ডেভেলপার",
+    profileImage: "https://res.cloudinary.com/db1ulwbxc/image/upload/v1777178872/1739725922960_shi8xt.jpg",
+    heroDescription: "একজন অভিজ্ঞ ওয়েব ডেভেলপার যিনি WordPress এবং Laravel এ বিশেষজ্ঞ। আধুনিক, রেসপনসিভ এবং ইউজার-ফ্রেন্ডলি ওয়েবসাইট তৈরি করা আমার প্যাশন।",
+    typingTexts: ["WordPress ডেভেলপার", "Laravel ডেভেলপার", "ফ্রন্টএন্ড ডিজাইনার", "ফ্রিল্যান্সার"],
+
+    // === Contact Info ===
+    phone: "+8801840573758",
+    email: "riazofficialbd@gmail.com",
+    location: "Sirajganj, Belkuchi",
+
+    // === About ===
+    aboutText: "আমি রিয়াজ হোসেন, একজন প্যাশনেট ওয়েব ডেভেলপার। গত ৩+ বছর ধরে আমি WordPress এবং Laravel প্ল্যাটফর্মে কাজ করছি। আমি বিশ্বাস করি প্রতিটি ওয়েবসাইট হওয়া উচিত সুন্দর, দ্রুত এবং ব্যবহারকারী বান্ধব।",
+
+    // === Stats ===
+    stats: [
+        { icon: "fas fa-project-diagram", value: 50, suffix: "+", label: "প্রজেক্ট সম্পন্ন" },
+        { icon: "fas fa-smile", value: 40, suffix: "+", label: "সন্তুষ্ট ক্লায়েন্ট" },
+        { icon: "fas fa-clock", value: 3, suffix: "+", label: "বছরের অভিজ্ঞতা" },
+        { icon: "fas fa-award", value: 15, suffix: "+", label: "পুরস্কার/সার্টিফিকেট" }
+    ],
+
+
+    // === Skills ===
+    skills: [
+        { name: "WordPress", percentage: 95 },
+        { name: "Laravel / PHP", percentage: 88 },
+        { name: "HTML / CSS / Tailwind", percentage: 92 },
+        { name: "JavaScript", percentage: 80 },
+        { name: "MySQL / Database", percentage: 85 },
+        { name: "REST API", percentage: 82 }
+    ],
+
+    // === Technologies ===
+    technologies: [
+        { name: "WordPress", icon: "fab fa-wordpress" },
+        { name: "Laravel", icon: "fab fa-laravel" },
+        { name: "PHP", icon: "fab fa-php" },
+        { name: "JavaScript", icon: "fab fa-js-square" },
+        { name: "HTML5", icon: "fab fa-html5" },
+        { name: "CSS3", icon: "fab fa-css3-alt" },
+        { name: "Bootstrap", icon: "fab fa-bootstrap" },
+        { name: "Git", icon: "fab fa-git-alt" },
+        { name: "MySQL", icon: "fas fa-database" }
+    ],
+
+    // === Services ===
+    services: [
+        { icon: "fab fa-wordpress", title: "WordPress ডেভেলপমেন্ট", description: "কাস্টম থিম, প্লাগইন এবং সম্পূর্ণ ওয়ার্ডপ্রেস সলিউশন তৈরি করি।" },
+        { icon: "fab fa-laravel", title: "Laravel ডেভেলপমেন্ট", description: "স্কেলেবল ও সিকিউর ওয়েব অ্যাপ্লিকেশন Laravel দিয়ে তৈরি করি।" },
+        { icon: "fas fa-palette", title: "UI/UX ডিজাইন", description: "আধুনিক এবং ইউজার-ফ্রেন্ডলি ইন্টারফেস ডিজাইন করি।" },
+        { icon: "fas fa-mobile-alt", title: "রেসপনসিভ ডিজাইন", description: "সকল ডিভাইসে পারফেক্ট দেখাবে এমন ওয়েবসাইট তৈরি করি।" },
+        { icon: "fas fa-search", title: "SEO অপটিমাইজেশন", description: "সার্চ ইঞ্জিন ফ্রেন্ডলি ওয়েবসাইট তৈরি করে ট্র্যাফিক বাড়াই।" },
+        { icon: "fas fa-server", title: "হোস্টিং ও মেইনটেনেন্স", description: "ওয়েবসাইট হোস্টিং সেটআপ ও নিয়মিত রক্ষণাবেক্ষণ করি।" }
+    ],
+
+
+    // === Projects ===
+    projects: [
+        {
+            title: "ই-কমার্স ওয়েবসাইট",
+            description: "WooCommerce ভিত্তিক সম্পূর্ণ ই-কমার্স সলিউশন",
+            image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=800&fit=crop",
+            tags: ["WordPress", "WooCommerce", "PHP"],
+            liveUrl: "#",
+            githubUrl: "#"
+        },
+        {
+            title: "রেস্টুরেন্ট ম্যানেজমেন্ট",
+            description: "Laravel ভিত্তিক রেস্টুরেন্ট অর্ডার ম্যানেজমেন্ট সিস্টেম",
+            image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=800&fit=crop",
+            tags: ["Laravel", "MySQL", "REST API"],
+            liveUrl: "#",
+            githubUrl: "#"
+        },
+        {
+            title: "কর্পোরেট ওয়েবসাইট",
+            description: "মডার্ন কর্পোরেট বিজনেস ওয়েবসাইট",
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=800&fit=crop",
+            tags: ["WordPress", "Elementor", "SEO"],
+            liveUrl: "#",
+            githubUrl: "#"
+        },
+        {
+            title: "পোর্টফোলিও টেমপ্লেট",
+            description: "প্রিমিয়াম পার্সোনাল পোর্টফোলিও ওয়েবসাইট",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop",
+            tags: ["HTML", "CSS", "JavaScript"],
+            liveUrl: "#",
+            githubUrl: "#"
+        },
+        {
+            title: "ব্লগ প্ল্যাটফর্ম",
+            description: "কাস্টম ব্লগ CMS Laravel দিয়ে তৈরি",
+            image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=800&fit=crop",
+            tags: ["Laravel", "Vue.js", "MySQL"],
+            liveUrl: "#",
+            githubUrl: "#"
+        },
+        {
+            title: "স্কুল ম্যানেজমেন্ট",
+            description: "সম্পূর্ণ স্কুল ম্যানেজমেন্ট সিস্টেম",
+            image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=800&fit=crop",
+            tags: ["Laravel", "Bootstrap", "API"],
+            liveUrl: "#",
+            githubUrl: "#"
+        }
+    ],
+
+
+    // === Experience ===
+    experience: [
+        {
+            title: "সিনিয়র ওয়েব ডেভেলপার",
+            company: "ফ্রিল্যান্স",
+            period: "২০২৩ - বর্তমান",
+            description: "WordPress ও Laravel প্রজেক্টে লিড ডেভেলপার হিসেবে কাজ করছি। ক্লায়েন্টদের জন্য কাস্টম সলিউশন তৈরি করি।"
+        },
+        {
+            title: "WordPress ডেভেলপার",
+            company: "ফাইভার / আপওয়ার্ক",
+            period: "২০২২ - ২০২৩",
+            description: "বিভিন্ন আন্তর্জাতিক ক্লায়েন্টদের জন্য WordPress থিম এবং প্লাগইন ডেভেলপ করেছি।"
+        },
+        {
+            title: "জুনিয়র ডেভেলপার",
+            company: "লোকাল এজেন্সি",
+            period: "২০২১ - ২০২২",
+            description: "ওয়েব ডেভেলপমেন্ট ক্যারিয়ার শুরু। HTML, CSS, JavaScript ও PHP শিখেছি।"
+        }
+    ],
+
+    // === Testimonials ===
+    testimonials: [
+        {
+            name: "আহমেদ হাসান",
+            role: "বিজনেস ওনার",
+            text: "রিয়াজ ভাই অত্যন্ত প্রফেশনাল এবং দক্ষ। আমার ই-কমার্স সাইটটি অসাধারণ হয়েছে। সময়মত ডেলিভারি করেছেন।",
+            avatar: "https://ui-avatars.com/api/?name=Ahmed+Hasan&background=3a86ff&color=fff"
+        },
+        {
+            name: "সাকিব রহমান",
+            role: "স্টার্টআপ ফাউন্ডার",
+            text: "Laravel দিয়ে আমাদের অ্যাপ বানিয়েছেন। কোডের কোয়ালিটি এবং পারফরম্যান্স দুটোই চমৎকার।",
+            avatar: "https://ui-avatars.com/api/?name=Sakib+Rahman&background=8338ec&color=fff"
+        },
+        {
+            name: "নুসরাত জাহান",
+            role: "ব্লগার",
+            text: "আমার ব্লগ সাইটটি রিয়াজ ভাই খুব সুন্দর করে ডিজাইন করেছেন। SEO ফ্রেন্ডলি এবং খুব ফাস্ট।",
+            avatar: "https://ui-avatars.com/api/?name=Nusrat+Jahan&background=ff006e&color=fff"
+        }
+    ],
+
+
+    // === Social Links ===
+    socialLinks: [
+        { icon: "fab fa-facebook-f", url: "https://facebook.com/", color: "#1877f2" },
+        { icon: "fab fa-github", url: "https://github.com/", color: "#ffffff" },
+        { icon: "fab fa-linkedin-in", url: "https://linkedin.com/", color: "#0a66c2" },
+        { icon: "fab fa-whatsapp", url: "https://wa.me/8801840573758", color: "#25d366" },
+        { icon: "fab fa-telegram", url: "https://t.me/", color: "#0088cc" }
+    ],
+
+    // === Google Map ===
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58283.108364868465!2d89.3656!3d24.1266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fdee8b3e4fc2c5%3A0x5b02b5e3eccd74b!2sBelkuchi%2C%20Sirajganj!5e0!3m2!1sen!2sbd!4v1700000000000",
+
+    // === API Config ===
+    telegramBotToken: "YOUR_TELEGRAM_BOT_TOKEN",
+    telegramChatId: "YOUR_CHAT_ID",
+    googleScriptUrl: "YOUR_GOOGLE_SCRIPT_URL"
+};
+
+
+// ============================================================
+// ============ INITIALIZATION ================================
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    initPersonalInfo();
+    initStats();
+    initSkills();
+    initTechnologies();
+    initServices();
+    initProjects();
+    initExperience();
+    initTestimonials();
+    initContactInfo();
+    initSocialLinks();
+    initMap();
+    initParticles();
+    initTypingEffect();
+    initScrollReveal();
+    initNavbar();
+    initMobileMenu();
+    initContactForm();
+    initBackToTop();
+    initCounters();
+});
+
+// === Personal Info Population ===
+function initPersonalInfo() {
+    document.getElementById('heroName').textContent = siteData.name;
+    document.getElementById('heroImage').src = siteData.profileImage;
+    document.getElementById('heroDescription').textContent = siteData.heroDescription;
+    document.getElementById('aboutText').textContent = siteData.aboutText;
+    document.getElementById('aboutName').textContent = siteData.name;
+    document.getElementById('aboutPhone').textContent = siteData.phone;
+    document.getElementById('aboutEmail').textContent = siteData.email;
+    document.getElementById('aboutLocation').textContent = siteData.location;
+}
+
+
+// === Stats Grid ===
+function initStats() {
+    const grid = document.getElementById('statsGrid');
+    grid.innerHTML = siteData.stats.map((s, i) => `
+        <div class="glass-card p-6 text-center reveal-scale" style="transition-delay: ${i * 0.1}s;">
+            <i class="${s.icon} text-3xl text-primary mb-3"></i>
+            <h3 class="text-3xl font-bold counter-value" data-target="${s.value}" data-suffix="${s.suffix}">0${s.suffix}</h3>
+            <p class="text-gray-400 mt-2">${s.label}</p>
+        </div>
+    `).join('');
+}
+
+// === Skills Bars ===
+function initSkills() {
+    const container = document.getElementById('skillBars');
+    container.innerHTML = siteData.skills.map(s => `
+        <div>
+            <div class="flex justify-between mb-2">
+                <span class="text-gray-300 font-medium">${s.name}</span>
+                <span class="text-primary font-bold">${s.percentage}%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-progress" data-width="${s.percentage}"></div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// === Technologies Grid ===
+function initTechnologies() {
+    const grid = document.getElementById('techGrid');
+    grid.innerHTML = siteData.technologies.map((t, i) => `
+        <div class="glass-card p-4 text-center reveal-scale" style="transition-delay: ${i * 0.05}s;">
+            <i class="${t.icon} text-2xl text-primary mb-2"></i>
+            <p class="text-sm text-gray-300">${t.name}</p>
+        </div>
+    `).join('');
+}
+
+// === Services ===
+function initServices() {
+    const grid = document.getElementById('servicesGrid');
+    grid.innerHTML = siteData.services.map((s, i) => `
+        <div class="glass-card p-8 text-center reveal" style="transition-delay: ${i * 0.1}s;">
+            <div class="w-16 h-16 mx-auto mb-5 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="${s.icon} text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">${s.title}</h3>
+            <p class="text-gray-400">${s.description}</p>
+        </div>
+    `).join('');
+}
+
+
+// === Projects Grid ===
+function initProjects() {
+    const grid = document.getElementById('projectsGrid');
+    grid.innerHTML = siteData.projects.map((p, i) => `
+        <div class="glass-card project-card reveal-scale" style="transition-delay: ${i * 0.1}s;">
+            <div class="project-img-wrapper">
+                <img src="${p.image}" alt="${p.title}" loading="lazy">
+                <div class="project-overlay">
+                    <div class="flex gap-3">
+                        <a href="${p.liveUrl}" target="_blank" class="btn-primary text-white text-sm px-4 py-2">
+                            <i class="fas fa-external-link-alt"></i> লাইভ
+                        </a>
+                        <a href="${p.githubUrl}" target="_blank" class="btn-outline text-white text-sm px-4 py-2">
+                            <i class="fab fa-github"></i> কোড
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">${p.title}</h3>
+                <p class="text-gray-400 text-sm mb-4">${p.description}</p>
+                <div class="flex flex-wrap gap-2">
+                    ${p.tags.map(tag => `<span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">${tag}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// === Experience Timeline ===
+function initExperience() {
+    const timeline = document.getElementById('experienceTimeline');
+    timeline.innerHTML = siteData.experience.map((e, i) => `
+        <div class="relative reveal" style="transition-delay: ${i * 0.15}s;">
+            <div class="absolute left-[-27px] top-2 timeline-dot"></div>
+            <div class="glass-card p-6 ml-4">
+                <span class="text-primary text-sm font-medium">${e.period}</span>
+                <h3 class="text-xl font-bold mt-1">${e.title}</h3>
+                <p class="text-gray-400 text-sm mt-1"><i class="fas fa-building mr-2"></i>${e.company}</p>
+                <p class="text-gray-300 mt-3">${e.description}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// === Testimonials ===
+function initTestimonials() {
+    const grid = document.getElementById('testimonialsGrid');
+    grid.innerHTML = siteData.testimonials.map((t, i) => `
+        <div class="glass-card p-8 reveal" style="transition-delay: ${i * 0.1}s;">
+            <div class="flex items-center gap-3 mb-5">
+                <img src="${t.avatar}" alt="${t.name}" class="w-12 h-12 rounded-full">
+                <div>
+                    <h4 class="font-bold">${t.name}</h4>
+                    <p class="text-sm text-gray-400">${t.role}</p>
+                </div>
+            </div>
+            <p class="text-gray-300 italic">"${t.text}"</p>
+            <div class="flex gap-1 mt-4 text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+        </div>
+    `).join('');
+}
+
+
+// === Contact Info ===
+function initContactInfo() {
+    const container = document.getElementById('contactInfo');
+    const info = [
+        { icon: "fas fa-phone", label: "ফোন", value: siteData.phone },
+        { icon: "fas fa-envelope", label: "ইমেইল", value: siteData.email },
+        { icon: "fas fa-map-marker-alt", label: "লোকেশন", value: siteData.location }
+    ];
+    container.innerHTML = info.map(i => `
+        <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <i class="${i.icon} text-primary"></i>
+            </div>
+            <div>
+                <p class="text-sm text-gray-400">${i.label}</p>
+                <p class="text-white font-medium">${i.value}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// === Social Links ===
+function initSocialLinks() {
+    const socialHTML = siteData.socialLinks.map(s => `
+        <a href="${s.url}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary hover:bg-primary/10 transition-all duration-300">
+            <i class="${s.icon}"></i>
+        </a>
+    `).join('');
+    document.getElementById('heroSocials').innerHTML = socialHTML;
+    document.getElementById('contactSocials').innerHTML = socialHTML;
+    document.getElementById('footerSocials').innerHTML = socialHTML;
+}
+
+// === Google Map ===
+function initMap() {
+    document.getElementById('googleMap').src = siteData.mapUrl;
+}
+
+// === Particles ===
+function initParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.animationDuration = (6 + Math.random() * 6) + 's';
+        particle.style.width = (2 + Math.random() * 4) + 'px';
+        particle.style.height = particle.style.width;
+        container.appendChild(particle);
+    }
+}
+
+
+// === Typing Effect ===
+function initTypingEffect() {
+    const el = document.getElementById('typingText');
+    const texts = siteData.typingTexts;
+    let textIndex = 0, charIndex = 0, isDeleting = false;
+
+    function type() {
+        const current = texts[textIndex];
+        if (isDeleting) {
+            el.textContent = current.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            el.textContent = current.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let speed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === current.length) {
+            speed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            speed = 500;
+        }
+        setTimeout(type, speed);
+    }
+    type();
+}
+
+// === Scroll Reveal ===
+function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+    function checkReveal() {
+        reveals.forEach(el => {
+            const top = el.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (top < windowHeight - 80) {
+                el.classList.add('active');
+            }
+        });
+
+        // Skill bars animation
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            const rect = bar.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) {
+                bar.style.width = bar.dataset.width + '%';
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkReveal);
+    checkReveal(); // Initial check
+}
+
+// === Navbar ===
+function initNavbar() {
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    window.addEventListener('scroll', () => {
+        // Scrolled state
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // Active section highlighting
+        let current = '';
+        sections.forEach(section => {
+            const top = section.offsetTop - 100;
+            if (window.scrollY >= top) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+
+
+// === Mobile Menu ===
+function initMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeMenuBtn');
+    const overlay = document.getElementById('menuOverlay');
+    const links = document.querySelectorAll('.mobile-nav-link');
+
+    function openMenu() {
+        menu.classList.add('open');
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        menu.classList.remove('open');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    links.forEach(link => link.addEventListener('click', closeMenu));
+}
+
+// === Contact Form ===
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> পাঠানো হচ্ছে...';
+
+        try {
+            // Send to Telegram
+            await sendToTelegram(data);
+
+            // Send to Google Script
+            if (siteData.googleScriptUrl && siteData.googleScriptUrl !== 'YOUR_GOOGLE_SCRIPT_URL') {
+                await fetch(siteData.googleScriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+            }
+
+            status.textContent = '✅ মেসেজ সফলভাবে পাঠানো হয়েছে!';
+            status.className = 'mt-4 text-center text-green-400';
+            status.classList.remove('hidden');
+            form.reset();
+        } catch (err) {
+            status.textContent = '❌ মেসেজ পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।';
+            status.className = 'mt-4 text-center text-red-400';
+            status.classList.remove('hidden');
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> মেসেজ পাঠান';
+        setTimeout(() => status.classList.add('hidden'), 5000);
+    });
+}
+
+// === Send to Telegram ===
+async function sendToTelegram(data) {
+    if (siteData.telegramBotToken === 'YOUR_TELEGRAM_BOT_TOKEN') return;
+
+    const message = `🌐 *নতুন মেসেজ - পোর্টফোলিও*\n\n👤 *নাম:* ${data.name}\n📱 *ফোন:* ${data.phone}\n📧 *ইমেইল:* ${data.email}\n💬 *মেসেজ:* ${data.message}`;
+
+    await fetch(`https://api.telegram.org/bot${siteData.telegramBotToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: siteData.telegramChatId,
+            text: message,
+            parse_mode: 'Markdown'
+        })
+    });
+}
+
+
+// === Back to Top ===
+function initBackToTop() {
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+        } else {
+            btn.style.opacity = '0';
+            btn.style.pointerEvents = 'none';
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// === Counter Animation ===
+function initCounters() {
+    const counters = document.querySelectorAll('.counter-value');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.target);
+                const suffix = el.dataset.suffix || '';
+                let current = 0;
+                const increment = target / 60;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    el.textContent = Math.floor(current) + suffix;
+                }, 30);
+                observer.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => observer.observe(c));
+}
+
+// === Smooth Scroll for anchor links ===
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+</body>
+</html>
