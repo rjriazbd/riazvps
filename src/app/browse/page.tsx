@@ -6,20 +6,18 @@ import MovieCard from "@/components/MovieCard";
 import { allContent, genres } from "@/data/content";
 
 export default function BrowsePage() {
-  const [selectedGenre, setSelectedGenre] = useState("সব");
+  const [selectedGenre, setSelectedGenre] = useState("All");
   const [selectedType, setSelectedType] = useState<"all" | "movie" | "series" | "natok">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<"rating" | "year" | "name">("rating");
 
-  // Filter content
   const filteredContent = allContent.filter((item) => {
     const matchesType = selectedType === "all" || item.type === selectedType;
     const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesGenre = selectedGenre === "সব" || (item.genre && item.genre.includes(selectedGenre));
+    const matchesGenre = selectedGenre === "All" || (item.genre && item.genre.includes(selectedGenre));
     return matchesType && matchesSearch && matchesGenre;
   });
 
-  // Sort content
   const sortedContent = [...filteredContent].sort((a, b) => {
     if (sortBy === "rating") return b.rating - a.rating;
     if (sortBy === "name") return a.title.localeCompare(b.title);
@@ -27,43 +25,43 @@ export default function BrowsePage() {
   });
 
   return (
-    <div className="pt-24 md:pt-28 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-32 md:pt-40 pb-20">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Page Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">ব্রাউজ করুন</h1>
-          <p className="text-gray-400">আপনার পছন্দের কন্টেন্ট খুঁজুন</p>
+        <div className="mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Browse</h1>
+          <p className="text-gray-500 text-lg font-light">Find your next favorite to watch</p>
         </div>
 
         {/* Search Bar */}
-        <div className="relative mb-6">
-          <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+        <div className="relative mb-10">
+          <Search size={20} className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500" />
           <input
             type="text"
-            placeholder="মুভি, সিরিজ বা নাটক খুঁজুন..."
+            placeholder="Search movies, series, originals..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-card-bg border border-gray-700 rounded-xl pl-12 pr-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
+            className="w-full bg-white/5 border border-white/10 rounded-lg pl-14 pr-6 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 transition-all duration-300 text-sm"
           />
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
+        <div className="flex flex-col md:flex-row gap-6 mb-10">
           {/* Type Filter */}
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-3 flex-wrap">
             {[
-              { value: "all", label: "সব" },
-              { value: "movie", label: "মুভি" },
-              { value: "series", label: "সিরিজ" },
-              { value: "natok", label: "নাটক" },
+              { value: "all", label: "All" },
+              { value: "movie", label: "Movies" },
+              { value: "series", label: "Series" },
+              { value: "natok", label: "Originals" },
             ].map((type) => (
               <button
                 key={type.value}
                 onClick={() => setSelectedType(type.value as typeof selectedType)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-300 tracking-wide ${
                   selectedType === type.value
                     ? "bg-primary text-white"
-                    : "bg-white/10 text-gray-300 hover:bg-white/20 border border-white/10"
+                    : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/5"
                 }`}
               >
                 {type.label}
@@ -72,30 +70,30 @@ export default function BrowsePage() {
           </div>
 
           {/* Sort */}
-          <div className="flex items-center gap-2 md:ml-auto">
-            <SlidersHorizontal size={16} className="text-gray-400" />
+          <div className="flex items-center gap-3 md:ml-auto">
+            <SlidersHorizontal size={16} className="text-gray-500" />
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="bg-card-bg border border-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-primary cursor-pointer"
+              className="bg-white/5 border border-white/10 rounded-md px-4 py-2.5 text-white text-sm focus:outline-none focus:border-primary/50 cursor-pointer appearance-none"
             >
-              <option value="rating">রেটিং অনুযায়ী</option>
-              <option value="year">সাম্প্রতিক</option>
-              <option value="name">নাম অনুযায়ী</option>
+              <option value="rating">Top Rated</option>
+              <option value="year">Most Recent</option>
+              <option value="name">Alphabetical</option>
             </select>
           </div>
         </div>
 
         {/* Genre Tags */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-hide">
+        <div className="flex items-center gap-3 overflow-x-auto pb-6 mb-10">
           {genres.map((genre) => (
             <button
               key={genre}
               onClick={() => setSelectedGenre(genre)}
-              className={`px-4 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors ${
+              className={`px-4 py-2 rounded-md text-sm whitespace-nowrap transition-all duration-300 font-medium ${
                 selectedGenre === genre
-                  ? "bg-primary/20 text-primary border border-primary"
-                  : "bg-white/5 text-gray-400 hover:text-white border border-gray-700 hover:border-gray-500"
+                  ? "bg-primary/15 text-primary border border-primary/30"
+                  : "bg-white/3 text-gray-500 hover:text-white border border-white/5 hover:border-white/15"
               }`}
             >
               {genre}
@@ -104,22 +102,22 @@ export default function BrowsePage() {
         </div>
 
         {/* Results count */}
-        <p className="text-gray-400 text-sm mb-6">
-          {sortedContent.length}টি কন্টেন্ট পাওয়া গেছে
+        <p className="text-gray-600 text-sm mb-8 font-light">
+          {sortedContent.length} titles found
         </p>
 
         {/* Content Grid */}
         {sortedContent.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 md:gap-6">
             {sortedContent.map((item) => (
               <MovieCard key={item.id} {...item} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-20">
-            <div className="text-6xl mb-4">🎬</div>
-            <h3 className="text-white text-xl font-medium mb-2">কোনো কন্টেন্ট পাওয়া যায়নি</h3>
-            <p className="text-gray-400">অনুগ্রহ করে অন্য ফিল্টার ব্যবহার করুন</p>
+          <div className="text-center py-32">
+            <div className="text-6xl mb-6 opacity-50">🔍</div>
+            <h3 className="text-white text-xl font-medium mb-3">No results found</h3>
+            <p className="text-gray-500 font-light">Try adjusting your search or filters</p>
           </div>
         )}
       </div>

@@ -10,54 +10,64 @@ export default function Home() {
 
       {/* Trending Movies */}
       <ContentSection
-        title="🔥 ট্রেন্ডিং মুভি"
+        title="Trending Now"
+        subtitle="The most popular movies this week"
         viewAllLink="/movies"
         items={trendingMovies}
       />
 
       {/* Web Series */}
       <ContentSection
-        title="📺 জনপ্রিয় ওয়েব সিরিজ"
+        title="Popular Series"
+        subtitle="Binge-worthy shows everyone is talking about"
         viewAllLink="/series"
         items={webSeries}
       />
 
-      {/* Natoks */}
+      {/* Originals */}
       <ContentSection
-        title="🎭 সেরা নাটক"
-        viewAllLink="/natok"
+        title="StreamBD Originals"
+        subtitle="Exclusive content you won't find anywhere else"
+        viewAllLink="/originals"
         items={natoks}
       />
 
       {/* New Releases */}
       <ContentSection
-        title="✨ নতুন যুক্ত হয়েছে"
+        title="Just Added"
+        subtitle="Fresh titles added this week"
         items={newReleases}
       />
 
       {/* CTA Section */}
-      <section className="py-16 px-4">
+      <section className="section-spacing px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 border border-primary/30 rounded-2xl p-8 md:p-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
-              সীমাহীন বিনোদনের জগতে আপনাকে স্বাগতম!
-            </h2>
-            <p className="text-gray-300 text-base md:text-lg mb-8 max-w-2xl mx-auto">
-              মাসে মাত্র ৯৯ টাকায় পান সব প্রিমিয়াম কন্টেন্ট। বাংলা সিনেমা, নাটক, ওয়েব সিরিজ - সব এক জায়গায়।
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="/pricing"
-                className="bg-primary hover:bg-primary-hover text-white px-8 py-3.5 rounded-lg font-medium transition-colors shadow-lg shadow-primary/30 text-base"
-              >
-                সাবস্ক্রাইব করুন
-              </a>
-              <a
-                href="/register"
-                className="bg-white/10 hover:bg-white/20 text-white px-8 py-3.5 rounded-lg font-medium transition-colors border border-white/20 text-base"
-              >
-                ফ্রি ট্রায়াল শুরু করুন
-              </a>
+          <div className="relative overflow-hidden rounded-2xl p-12 md:p-20">
+            {/* Background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 border border-white/5 rounded-2xl" />
+            
+            <div className="relative">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+                Unlimited Entertainment<br className="hidden md:block" /> Awaits You
+              </h2>
+              <p className="text-gray-400 text-base md:text-lg mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                Stream thousands of movies, series, and originals in stunning quality. 
+                Start your journey today with a free trial.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+                <a
+                  href="/pricing"
+                  className="bg-primary hover:bg-primary-hover text-white px-10 py-4 rounded-md font-medium transition-all duration-300 text-sm tracking-wide shadow-lg shadow-primary/20 hover:shadow-primary/40"
+                >
+                  View Plans
+                </a>
+                <a
+                  href="/register"
+                  className="bg-white/5 hover:bg-white/10 text-white px-10 py-4 rounded-md font-medium transition-all duration-300 border border-white/10 text-sm tracking-wide"
+                >
+                  Start Free Trial
+                </a>
+              </div>
             </div>
           </div>
         </div>

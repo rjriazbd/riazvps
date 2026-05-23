@@ -12,35 +12,39 @@ interface BannerSlide {
   genre: string;
   year: string;
   rating: string;
+  duration: string;
 }
 
 const bannerSlides: BannerSlide[] = [
   {
     id: "1",
-    title: "মাটির প্রজার দেশে",
-    description: "একটি গ্রামীণ বাংলাদেশের গল্প, যেখানে সাধারণ মানুষের জীবন সংগ্রাম আর স্বপ্নের কথা বলা হয়েছে। এই নাটকটি আপনাকে আবেগে ভাসাবে।",
+    title: "The Last Frontier",
+    description: "A gripping tale of survival and redemption set against the backdrop of a world on the brink of collapse. Follow a group of unlikely heroes as they fight to protect what matters most.",
     image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=800&fit=crop",
-    genre: "ড্রামা • পারিবারিক",
-    year: "২০২৪",
-    rating: "৮.৫",
+    genre: "Action  •  Thriller",
+    year: "2024",
+    rating: "9.2",
+    duration: "2h 15m",
   },
   {
     id: "2",
-    title: "ঢাকা ক্রাইম",
-    description: "ঢাকা শহরের অন্ধকার জগতের রহস্য উন্মোচন করে এক সাহসী সাংবাদিক। থ্রিলার ভরপুর এই সিরিজ আপনাকে শেষ পর্যন্ত ধরে রাখবে।",
+    title: "Midnight Shadows",
+    description: "An investigative journalist uncovers a web of corruption that reaches the highest levels of power. A dark, atmospheric crime thriller that keeps you guessing until the very end.",
     image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1920&h=800&fit=crop",
-    genre: "থ্রিলার • ক্রাইম",
-    year: "২০২৪",
-    rating: "৯.২",
+    genre: "Crime  •  Mystery",
+    year: "2024",
+    rating: "8.8",
+    duration: "1h 55m",
   },
   {
     id: "3",
-    title: "প্রেমের রং",
-    description: "দুই তরুণ-তরুণীর ভালোবাসার গল্প, যেখানে সমাজের বাধা পেরিয়ে তারা একত্র হওয়ার চেষ্টা করে। একটি হৃদয়স্পর্শী রোমান্টিক গল্প।",
+    title: "Eternal Echoes",
+    description: "Two souls separated by time find each other across different lifetimes. A visually stunning and emotionally powerful love story that transcends the boundaries of reality.",
     image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1920&h=800&fit=crop",
-    genre: "রোমান্স • ড্রামা",
-    year: "২০২৪",
-    rating: "৮.৮",
+    genre: "Romance  •  Drama",
+    year: "2024",
+    rating: "8.5",
+    duration: "2h 05m",
   },
 ];
 
@@ -50,7 +54,7 @@ export default function HeroBanner() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
-    }, 6000);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
 
@@ -60,57 +64,64 @@ export default function HeroBanner() {
   const slide = bannerSlides[currentSlide];
 
   return (
-    <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
+    <div className="relative h-[80vh] md:h-[90vh] w-full overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
+        className="absolute inset-0 bg-cover bg-center transition-all duration-[1.5s] ease-out"
         style={{ backgroundImage: `url(${slide.image})` }}
       />
 
       {/* Overlays */}
       <div className="absolute inset-0 gradient-overlay" />
-      <div className="absolute inset-0 gradient-left opacity-60" />
+      <div className="absolute inset-0 gradient-left" />
 
       {/* Content */}
-      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-end pb-20 md:pb-32">
+      <div className="relative h-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-end pb-28 md:pb-40">
         <div className="max-w-2xl animate-fadeIn" key={currentSlide}>
           {/* Meta info */}
-          <div className="flex items-center gap-3 mb-3">
-            <span className="bg-primary px-3 py-1 rounded text-white text-xs font-bold uppercase tracking-wide">
-              নতুন
+          <div className="flex items-center gap-4 mb-6">
+            <span className="bg-primary/90 px-3 py-1 rounded text-white text-xs font-semibold uppercase tracking-widest">
+              New
             </span>
-            <span className="text-gray-300 text-sm">{slide.genre}</span>
-            <span className="text-gray-400 text-sm">•</span>
-            <span className="text-gray-300 text-sm">{slide.year}</span>
-            <span className="text-gray-400 text-sm">•</span>
-            <span className="text-gold text-sm font-medium">★ {slide.rating}</span>
+            <span className="text-gray-300 text-sm font-light tracking-wide">{slide.genre}</span>
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
             {slide.title}
           </h1>
 
+          {/* Meta row */}
+          <div className="flex items-center gap-4 mb-6 text-sm">
+            <span className="text-gold font-semibold flex items-center gap-1">
+              ★ {slide.rating}
+            </span>
+            <span className="text-gray-500">|</span>
+            <span className="text-gray-300 font-light">{slide.year}</span>
+            <span className="text-gray-500">|</span>
+            <span className="text-gray-300 font-light">{slide.duration}</span>
+          </div>
+
           {/* Description */}
-          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed mb-6 line-clamp-3">
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-xl font-light">
             {slide.description}
           </p>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <Link
               href={`/watch/${slide.id}`}
-              className="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 md:px-8 md:py-3.5 rounded-lg transition-all font-medium text-sm md:text-base shadow-lg shadow-primary/30"
+              className="flex items-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-md transition-all duration-300 font-medium text-sm tracking-wide shadow-lg shadow-primary/20 hover:shadow-primary/40"
             >
-              <Play size={20} fill="white" />
-              এখনই দেখুন
+              <Play size={18} fill="white" />
+              Watch Now
             </Link>
             <Link
               href={`/watch/${slide.id}`}
-              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 md:px-8 md:py-3.5 rounded-lg transition-all font-medium text-sm md:text-base backdrop-blur-sm border border-white/20"
+              className="flex items-center gap-3 bg-white/10 hover:bg-white/15 text-white px-8 py-4 rounded-md transition-all duration-300 font-medium text-sm tracking-wide backdrop-blur-sm border border-white/10"
             >
-              <Info size={20} />
-              বিস্তারিত
+              <Info size={18} />
+              More Info
             </Link>
           </div>
         </div>
@@ -119,25 +130,25 @@ export default function HeroBanner() {
       {/* Navigation arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white transition-colors backdrop-blur-sm"
+        className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 hover:bg-black/60 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all duration-300 backdrop-blur-sm border border-white/5"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft size={22} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white transition-colors backdrop-blur-sm"
+        className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 hover:bg-black/60 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all duration-300 backdrop-blur-sm border border-white/5"
       >
-        <ChevronRight size={24} />
+        <ChevronRight size={22} />
       </button>
 
       {/* Slide indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-3">
         {bannerSlides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-1.5 rounded-full transition-all ${
-              index === currentSlide ? "w-8 bg-primary" : "w-4 bg-white/40 hover:bg-white/60"
+            className={`h-1 rounded-full transition-all duration-500 ${
+              index === currentSlide ? "w-10 bg-primary" : "w-5 bg-white/20 hover:bg-white/40"
             }`}
           />
         ))}

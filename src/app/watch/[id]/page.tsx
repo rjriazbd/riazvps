@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { Play, Star, Clock, Calendar, Share2, Heart, Download, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { allContent, trendingMovies, webSeries } from "@/data/content";
+import { allContent } from "@/data/content";
 import MovieCard from "@/components/MovieCard";
 
 export default function WatchPage() {
@@ -12,48 +12,44 @@ export default function WatchPage() {
   const [isDescExpanded, setIsDescExpanded] = useState(false);
   const [activeTab, setActiveTab] = useState<"episodes" | "related">("related");
 
-  // Find content by ID
   const content = allContent.find((item) => item.id === id) || allContent[0];
 
-  // Get related content (same type)
   const relatedContent = allContent
     .filter((item) => item.type === content.type && item.id !== content.id)
     .slice(0, 6);
 
   return (
-    <div className="pt-16 md:pt-20">
+    <div className="pt-20 md:pt-24">
       {/* Video Player Area */}
-      <div className="relative w-full aspect-video bg-black max-h-[70vh]">
-        {/* Placeholder for video player */}
+      <div className="relative w-full aspect-video bg-black max-h-[75vh]">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${content.thumbnail})` }}
         />
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <button className="w-20 h-20 md:w-24 md:h-24 bg-primary/90 hover:bg-primary rounded-full flex items-center justify-center transition-all transform hover:scale-110 shadow-2xl shadow-primary/40">
-            <Play size={36} className="text-white ml-1" fill="white" />
+        <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+          <button className="w-20 h-20 md:w-24 md:h-24 bg-primary/90 hover:bg-primary rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-2xl shadow-primary/30">
+            <Play size={32} className="text-white ml-1" fill="white" />
           </button>
         </div>
 
         {/* Video controls bar */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 md:p-6">
-          {/* Progress bar */}
-          <div className="w-full h-1 bg-gray-700 rounded-full mb-4 cursor-pointer group">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 md:p-8">
+          <div className="w-full h-1 bg-white/10 rounded-full mb-5 cursor-pointer group">
             <div className="h-full bg-primary rounded-full w-[35%] relative">
               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-5">
               <button className="text-white hover:text-primary transition-colors">
-                <Play size={20} fill="white" />
+                <Play size={18} fill="white" />
               </button>
-              <span className="text-gray-300 text-sm">০৫:২৩ / ০২:১৫:০০</span>
+              <span className="text-gray-400 text-sm font-light">05:23 / 02:15:00</span>
             </div>
-            <div className="flex items-center gap-3">
-              <span className="text-gray-300 text-sm hidden md:block">HD</span>
-              <button className="text-white hover:text-primary transition-colors text-sm">
-                সাবটাইটেল
+            <div className="flex items-center gap-4">
+              <span className="text-gray-400 text-xs font-medium tracking-wider uppercase">HD</span>
+              <button className="text-gray-400 hover:text-white transition-colors text-sm font-light">
+                Subtitles
               </button>
             </div>
           </div>
@@ -61,96 +57,97 @@ export default function WatchPage() {
       </div>
 
       {/* Content Details */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 md:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Title and badges */}
-            <div className="mb-4">
+            <div className="mb-8">
               {content.isPremium && (
-                <span className="inline-block bg-gold text-black text-xs font-bold px-2.5 py-1 rounded mb-3">
-                  প্রিমিয়াম
+                <span className="inline-block bg-gold/90 text-black text-[10px] font-bold px-3 py-1 rounded uppercase tracking-wider mb-4">
+                  Premium
                 </span>
               )}
-              <h1 className="text-2xl md:text-4xl font-bold text-white mb-3">
+              <h1 className="text-3xl md:text-5xl font-bold text-white mb-5 tracking-tight">
                 {content.title}
               </h1>
 
               {/* Meta info */}
-              <div className="flex flex-wrap items-center gap-3 text-sm">
-                <div className="flex items-center gap-1">
-                  <Star size={16} className="text-gold" fill="#ffd700" />
-                  <span className="text-gold font-medium">{content.rating}/১০</span>
+              <div className="flex flex-wrap items-center gap-4 text-sm">
+                <div className="flex items-center gap-1.5">
+                  <Star size={14} className="text-gold" fill="#f5c518" />
+                  <span className="text-gold font-medium">{content.rating}/10</span>
                 </div>
-                <span className="text-gray-500">•</span>
-                <div className="flex items-center gap-1 text-gray-300">
-                  <Calendar size={14} />
-                  <span>{content.year}</span>
+                <span className="text-gray-700">|</span>
+                <div className="flex items-center gap-1.5 text-gray-400">
+                  <Calendar size={13} />
+                  <span className="font-light">{content.year}</span>
                 </div>
-                <span className="text-gray-500">•</span>
-                <div className="flex items-center gap-1 text-gray-300">
-                  <Clock size={14} />
-                  <span>{content.duration}</span>
+                <span className="text-gray-700">|</span>
+                <div className="flex items-center gap-1.5 text-gray-400">
+                  <Clock size={13} />
+                  <span className="font-light">{content.duration}</span>
                 </div>
                 {content.genre && (
                   <>
-                    <span className="text-gray-500">•</span>
-                    <span className="text-gray-300">{content.genre}</span>
+                    <span className="text-gray-700">|</span>
+                    <span className="text-gray-400 font-light">{content.genre}</span>
                   </>
                 )}
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <button className="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-2.5 rounded-lg transition-colors font-medium">
-                <Play size={18} fill="white" />
-                চালু করুন
+            <div className="flex flex-wrap items-center gap-4 mb-10">
+              <button className="flex items-center gap-2.5 bg-primary hover:bg-primary-hover text-white px-7 py-3 rounded-md transition-all duration-300 font-medium text-sm tracking-wide">
+                <Play size={16} fill="white" />
+                Play Now
               </button>
-              <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg transition-colors border border-white/20">
-                <Heart size={18} />
-                পছন্দ
+              <button className="flex items-center gap-2.5 bg-white/5 hover:bg-white/10 text-white px-5 py-3 rounded-md transition-all duration-300 border border-white/10 text-sm">
+                <Heart size={16} />
+                Watchlist
               </button>
-              <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg transition-colors border border-white/20">
-                <Share2 size={18} />
-                শেয়ার
+              <button className="flex items-center gap-2.5 bg-white/5 hover:bg-white/10 text-white px-5 py-3 rounded-md transition-all duration-300 border border-white/10 text-sm">
+                <Share2 size={16} />
+                Share
               </button>
-              <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg transition-colors border border-white/20">
-                <Download size={18} />
-                ডাউনলোড
+              <button className="flex items-center gap-2.5 bg-white/5 hover:bg-white/10 text-white px-5 py-3 rounded-md transition-all duration-300 border border-white/10 text-sm">
+                <Download size={16} />
+                Download
               </button>
             </div>
 
             {/* Description */}
-            <div className="mb-8">
-              <p className={`text-gray-300 leading-relaxed ${!isDescExpanded ? "line-clamp-3" : ""}`}>
-                {content.description || "এটি একটি অসাধারণ কন্টেন্ট যা আপনাকে মুগ্ধ করবে। বাংলাদেশের সেরা পরিচালক এবং অভিনেতাদের সমন্বয়ে তৈরি এই প্রোডাকশন দর্শকদের হৃদয় ছুঁয়ে যাবে। গল্পের প্রতিটি মোড়ে রয়েছে চমক এবং আবেগ।"}
+            <div className="mb-10">
+              <p className={`text-gray-400 leading-relaxed font-light ${!isDescExpanded ? "line-clamp-3" : ""}`}>
+                {content.description || "An extraordinary production featuring top-tier talent. This compelling story will captivate you from beginning to end with its masterful storytelling and stunning visuals."}
               </p>
               <button
                 onClick={() => setIsDescExpanded(!isDescExpanded)}
-                className="flex items-center gap-1 text-primary hover:text-primary-hover mt-2 text-sm"
+                className="flex items-center gap-1.5 text-gray-300 hover:text-white mt-4 text-sm font-medium transition-colors"
               >
-                {isDescExpanded ? "কম দেখুন" : "আরও পড়ুন"}
-                <ChevronDown size={14} className={isDescExpanded ? "rotate-180" : ""} />
+                {isDescExpanded ? "Show Less" : "Read More"}
+                <ChevronDown size={14} className={`transition-transform ${isDescExpanded ? "rotate-180" : ""}`} />
               </button>
             </div>
 
             {/* Cast & Crew */}
-            <div className="mb-8">
-              <h3 className="text-white font-semibold text-lg mb-4">কাস্ট ও ক্রু</h3>
+            <div className="mb-10">
+              <h3 className="text-white font-semibold text-base mb-5 tracking-wide">Cast & Crew</h3>
               {content.director && (
-                <p className="text-gray-400 mb-2">
-                  <span className="text-gray-300 font-medium">পরিচালক:</span> {content.director}
+                <p className="text-gray-500 mb-3 text-sm">
+                  <span className="text-gray-300 font-medium">Director: </span>
+                  {content.director}
                 </p>
               )}
               {content.cast && content.cast.length > 0 && (
                 <div>
-                  <span className="text-gray-300 font-medium">অভিনেতা:</span>
-                  <div className="flex flex-wrap gap-2 mt-2">
+                  <span className="text-gray-300 font-medium text-sm">Starring:</span>
+                  <div className="flex flex-wrap gap-2.5 mt-3">
                     {content.cast.map((actor, index) => (
                       <span
                         key={index}
-                        className="bg-white/10 text-gray-300 px-3 py-1.5 rounded-full text-sm border border-white/10"
+                        className="bg-white/5 text-gray-400 px-4 py-2 rounded-md text-sm border border-white/5 font-light"
                       >
                         {actor}
                       </span>
@@ -162,27 +159,27 @@ export default function WatchPage() {
 
             {/* Episodes Tab (for series) */}
             {content.type === "series" && content.episodes && (
-              <div className="mb-8">
-                <div className="flex items-center gap-6 border-b border-gray-800 mb-4">
+              <div className="mb-10">
+                <div className="flex items-center gap-8 border-b border-white/5 mb-6">
                   <button
                     onClick={() => setActiveTab("episodes")}
-                    className={`pb-3 text-sm font-medium transition-colors border-b-2 ${
+                    className={`pb-4 text-sm font-medium transition-all duration-300 border-b-2 tracking-wide ${
                       activeTab === "episodes"
-                        ? "text-primary border-primary"
-                        : "text-gray-400 border-transparent hover:text-white"
+                        ? "text-white border-primary"
+                        : "text-gray-500 border-transparent hover:text-white"
                     }`}
                   >
-                    পর্ব সমূহ ({content.episodes})
+                    Episodes ({content.episodes})
                   </button>
                   <button
                     onClick={() => setActiveTab("related")}
-                    className={`pb-3 text-sm font-medium transition-colors border-b-2 ${
+                    className={`pb-4 text-sm font-medium transition-all duration-300 border-b-2 tracking-wide ${
                       activeTab === "related"
-                        ? "text-primary border-primary"
-                        : "text-gray-400 border-transparent hover:text-white"
+                        ? "text-white border-primary"
+                        : "text-gray-500 border-transparent hover:text-white"
                     }`}
                   >
-                    সম্পর্কিত
+                    More Like This
                   </button>
                 </div>
 
@@ -191,20 +188,20 @@ export default function WatchPage() {
                     {Array.from({ length: content.episodes }, (_, i) => (
                       <div
                         key={i}
-                        className="flex items-center gap-4 bg-card-bg hover:bg-card-hover rounded-lg p-4 transition-colors cursor-pointer group"
+                        className="flex items-center gap-5 bg-white/3 hover:bg-white/5 rounded-lg p-5 transition-all duration-300 cursor-pointer group border border-white/3"
                       >
-                        <div className="w-10 h-10 bg-white/10 group-hover:bg-primary rounded-full flex items-center justify-center flex-shrink-0 transition-colors">
-                          <Play size={16} className="text-white ml-0.5" fill="white" />
+                        <div className="w-10 h-10 bg-white/5 group-hover:bg-primary/80 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                          <Play size={14} className="text-white ml-0.5" fill="white" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <h4 className="text-white font-medium text-sm truncate">
-                            পর্ব {i + 1}: {content.title} - পার্ট {i + 1}
+                            Episode {i + 1}
                           </h4>
-                          <p className="text-gray-400 text-xs mt-0.5">৪৫ মিনিট</p>
+                          <p className="text-gray-600 text-xs mt-1 font-light">45 min</p>
                         </div>
                         {content.isPremium && i > 1 && (
-                          <span className="text-gold text-xs bg-gold/10 px-2 py-0.5 rounded">
-                            প্রিমিয়াম
+                          <span className="text-gold text-[10px] bg-gold/10 px-2.5 py-1 rounded uppercase tracking-wider font-bold">
+                            Premium
                           </span>
                         )}
                       </div>
@@ -215,28 +212,28 @@ export default function WatchPage() {
             )}
           </div>
 
-          {/* Sidebar - Related Content */}
+          {/* Sidebar */}
           <div className="lg:col-span-1">
-            <h3 className="text-white font-semibold text-lg mb-4">আপনার জন্য</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
+            <h3 className="text-white font-semibold text-base mb-6 tracking-wide">Recommended</h3>
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-5">
               {relatedContent.slice(0, 4).map((item) => (
-                <div key={item.id} className="flex gap-3 group cursor-pointer">
-                  <div className="w-24 h-16 lg:w-32 lg:h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gray-800">
+                <div key={item.id} className="flex gap-4 group cursor-pointer">
+                  <div className="w-24 h-16 lg:w-32 lg:h-20 rounded-md overflow-hidden flex-shrink-0 bg-gray-900">
                     <img
                       src={item.thumbnail}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-white text-sm font-medium truncate group-hover:text-primary transition-colors">
+                    <h4 className="text-white text-sm font-medium truncate group-hover:text-primary transition-colors duration-300">
                       {item.title}
                     </h4>
-                    <div className="flex items-center gap-1.5 mt-1">
-                      <Star size={10} className="text-gold" fill="#ffd700" />
-                      <span className="text-gold text-xs">{item.rating}</span>
+                    <div className="flex items-center gap-2 mt-2">
+                      <Star size={10} className="text-gold" fill="#f5c518" />
+                      <span className="text-gold text-xs font-medium">{item.rating}</span>
                     </div>
-                    <p className="text-gray-400 text-xs mt-0.5">{item.duration}</p>
+                    <p className="text-gray-600 text-xs mt-1 font-light">{item.duration}</p>
                   </div>
                 </div>
               ))}
@@ -246,9 +243,9 @@ export default function WatchPage() {
 
         {/* Related Content Section */}
         {(content.type !== "series" || activeTab === "related") && (
-          <section className="mt-12">
-            <h2 className="text-white text-xl font-bold mb-6">আরও দেখুন</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <section className="mt-20">
+            <h2 className="text-white text-2xl font-bold mb-8 tracking-tight">More Like This</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 md:gap-6">
               {relatedContent.map((item) => (
                 <MovieCard key={item.id} {...item} />
               ))}
