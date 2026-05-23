@@ -7,9 +7,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-1 mb-6">
-              <span className="text-primary font-black text-2xl tracking-tight">STREAM</span>
-              <span className="text-white font-light text-2xl tracking-tight">BD</span>
+            <div className="flex items-center gap-3 mb-6">
+              <img
+                src="https://res.cloudinary.com/db1ulwbxc/image/upload/v1779044554/700906516_26654958984183418_6821224961536211562_n_lpfxqc.jpg"
+                alt="GolpoBox"
+                className="w-10 h-10 rounded-lg"
+              />
+              <span className="text-white font-bold text-xl tracking-tight">GolpoBox</span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
               Your premium destination for movies, series, and exclusive originals. Stream unlimited entertainment anytime, anywhere.
@@ -54,7 +58,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/5 mt-16 pt-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-gray-600 text-sm">
-            &copy; 2024 StreamBD. All rights reserved.
+            &copy; 2024 GolpoBox. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-gray-600 hover:text-white transition-colors duration-300 text-sm">

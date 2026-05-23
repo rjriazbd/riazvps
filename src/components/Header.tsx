@@ -14,14 +14,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <span className="text-primary font-black text-2xl md:text-3xl tracking-tight">
-                STREAM
-              </span>
-              <span className="text-white font-light text-2xl md:text-3xl tracking-tight">
-                BD
-              </span>
-            </div>
+            <img
+              src="https://res.cloudinary.com/db1ulwbxc/image/upload/v1779044554/700906516_26654958984183418_6821224961536211562_n_lpfxqc.jpg"
+              alt="GolpoBox"
+              className="w-10 h-10 rounded-lg"
+            />
+            <span className="text-white font-bold text-xl md:text-2xl tracking-tight">
+              GolpoBox
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

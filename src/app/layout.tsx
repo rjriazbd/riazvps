@@ -10,7 +10,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "StreamBD - Premium Streaming Platform",
+  title: "GolpoBox - Premium Streaming Platform",
   description: "Watch the best movies, series, and exclusive originals. Stream unlimited entertainment anytime, anywhere.",
 };
 

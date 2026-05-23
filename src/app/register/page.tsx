@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 
 export default function RegisterPage() {
@@ -21,84 +22,89 @@ export default function RegisterPage() {
       </div>
 
       {/* Register Form */}
-      <div className="relative z-10 w-full max-w-sm">
-        <div className="glass rounded-2xl p-10 shadow-2xl">
+      <div className="relative z-10 w-full max-w-md">
+        <div className="glass rounded-2xl p-12 md:p-14 shadow-2xl">
           {/* Header */}
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-1 mb-6">
-              <span className="text-primary font-black text-2xl tracking-tight">STREAM</span>
-              <span className="text-white font-light text-2xl tracking-tight">BD</span>
+          <div className="text-center mb-14">
+            <div className="flex justify-center mb-8">
+              <Image
+                src="https://res.cloudinary.com/db1ulwbxc/image/upload/v1779044554/700906516_26654958984183418_6821224961536211562_n_lpfxqc.jpg"
+                alt="GolpoBox"
+                width={80}
+                height={80}
+                className="rounded-xl"
+              />
             </div>
-            <h1 className="text-2xl font-bold text-white mb-3 tracking-tight">Create Account</h1>
-            <p className="text-gray-500 text-sm font-light">Start your free 7-day trial today</p>
+            <h1 className="text-3xl font-bold text-white mb-4 tracking-tight">Create Account</h1>
+            <p className="text-gray-500 text-base font-light">Start your free 7-day trial today</p>
           </div>
 
           {/* Free trial badge */}
-          <div className="bg-primary/10 border border-primary/20 rounded-md p-3.5 mb-8 text-center">
-            <p className="text-primary text-xs font-medium tracking-wide">7 days free  •  Cancel anytime</p>
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-10 text-center">
+            <p className="text-primary text-sm font-medium tracking-wide">7 days free  •  Cancel anytime</p>
           </div>
 
           {/* Form */}
-          <form className="space-y-5">
+          <form className="space-y-7">
             {/* Name */}
             <div>
-              <label className="block text-gray-400 text-xs font-medium mb-2.5 uppercase tracking-wider">
+              <label className="block text-gray-400 text-xs font-medium mb-3 uppercase tracking-wider">
                 Full Name
               </label>
               <div className="relative">
-                <User size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
+                <User size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-600" />
                 <input
                   type="text"
                   placeholder="John Doe"
-                  className="w-full bg-white/5 border border-white/10 rounded-md pl-11 pr-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 transition-all duration-300 text-sm"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-14 pr-5 py-4.5 text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 transition-all duration-300 text-base"
                 />
               </div>
             </div>
 
             {/* Email */}
             <div>
-              <label className="block text-gray-400 text-xs font-medium mb-2.5 uppercase tracking-wider">
+              <label className="block text-gray-400 text-xs font-medium mb-3 uppercase tracking-wider">
                 Email Address
               </label>
               <div className="relative">
-                <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
+                <Mail size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-600" />
                 <input
                   type="email"
                   placeholder="you@example.com"
-                  className="w-full bg-white/5 border border-white/10 rounded-md pl-11 pr-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 transition-all duration-300 text-sm"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-14 pr-5 py-4.5 text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 transition-all duration-300 text-base"
                 />
               </div>
             </div>
 
             {/* Password */}
             <div>
-              <label className="block text-gray-400 text-xs font-medium mb-2.5 uppercase tracking-wider">
+              <label className="block text-gray-400 text-xs font-medium mb-3 uppercase tracking-wider">
                 Password
               </label>
               <div className="relative">
-                <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
+                <Lock size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-600" />
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Min. 8 characters"
-                  className="w-full bg-white/5 border border-white/10 rounded-md pl-11 pr-11 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 transition-all duration-300 text-sm"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-14 pr-14 py-4.5 text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 transition-all duration-300 text-base"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-300 transition-colors"
+                  className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-300 transition-colors"
                 >
-                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
             </div>
 
             {/* Terms */}
-            <label className="flex items-start gap-3 cursor-pointer pt-2">
+            <label className="flex items-start gap-4 cursor-pointer pt-3">
               <input
                 type="checkbox"
-                className="w-3.5 h-3.5 mt-0.5 bg-white/5 border border-white/20 rounded accent-primary"
+                className="w-4 h-4 mt-0.5 bg-white/5 border border-white/20 rounded accent-primary"
               />
-              <span className="text-gray-500 text-xs leading-relaxed font-light">
+              <span className="text-gray-500 text-sm leading-relaxed font-light">
                 I agree to the{" "}
                 <Link href="#" className="text-gray-300 hover:text-white transition-colors">
                   Terms of Service
@@ -113,7 +119,7 @@ export default function RegisterPage() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-primary-hover text-white py-3.5 rounded-md font-medium transition-all duration-300 text-sm tracking-wide shadow-lg shadow-primary/20 mt-3"
+              className="w-full bg-primary hover:bg-primary-hover text-white py-4.5 rounded-lg font-semibold transition-all duration-300 text-base tracking-wide shadow-lg shadow-primary/20 mt-4"
             >
               Create Account
             </button>
